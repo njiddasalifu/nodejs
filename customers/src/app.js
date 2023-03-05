@@ -1,9 +1,25 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
+
+// adding some JSON 
+const customers = [
+    {
+        "name": "Salif",
+        "Industry": "Tech"
+    },
+    {
+        "name": "Harrisu",
+        "Industry": "TeleMed"
+    },
+    {
+        "name": "Santus",
+        "Industry": "FinTech"
+    }
+];
 // this is making a GET request ti the server
 app.get('/', (req, res) => {
-    res.send('Hello from EL-SALIF LDT\n This is a GET request');
+    res.send({ "customers": customers});
 });
 // making POST request to the server
 app.post('/', (req, res)=> {
