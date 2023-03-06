@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+//const dotenv = require('dotenv');
+//dotenv.config(); 
 const app = express();
 mongoose.set('strictQuery', false);
 app.use(express.json());
@@ -45,4 +47,5 @@ app.post('/api/customers', (req, res)=> {
         console.log(e.message);
     }
   };
+
   start();
