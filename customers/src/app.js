@@ -4,7 +4,7 @@ const app = express();
 mongoose.set('strictQuery', false);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // adding some JSON 
 const customers = [
@@ -34,11 +34,15 @@ app.post('/api/customers', (req, res)=> {
 
  // start of mongodb connect
   const start = async() => {
-    await mongoose.connect('mongodb+srv://njiddasalifu:Salifu@cluster0.npdgefe.mongodb.net/?retryWrites=true&w=majority');
+    try{
+        await mongoose.connect('mongodb+srv://njiddasalifu:Salifu@cluster0.npdgefe.mongodb.net/?retryWrites=true&w=majority');
 
-    // starting the application after mongoDB connects 
-    app.listen(PORT, () => {
-        console.log('App is listening on port ' + PORT);
-     });
+        // starting the application after mongoDB connects 
+        app.listen(PORT, () => {
+            console.log('App is listening on port ' + PORT);
+        });
+    } catch(e){
+        console.log(e.message);
+    }
   };
   start();
