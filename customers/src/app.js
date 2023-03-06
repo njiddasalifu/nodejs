@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const Customer = require('./models/customer')
 dotenv.config(); 
 const app = express();
 mongoose.set('strictQuery', false);
@@ -24,10 +25,23 @@ const customers = [
         "Industry": "FinTech"
     }
 ];
+// creating a customer to be saved in mongodb
+const customer = new Customer({
+    name: 'Salifu',
+    industry: 'Tech'
+});
+customer.save();
+
+app.get('/', (req, res)=> {
+    res.send(customer);
+});
+
 // this is making a GET request t0 the server
 app.get('/', (req, res) => {
     res.send({ "customers": customers});
 });
+
+
 // making POST request to the server
 app.post('/api/customers', (req, res)=> {
     console.log(req.body);
