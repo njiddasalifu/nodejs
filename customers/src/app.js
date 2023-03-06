@@ -1,12 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
-//const dotenv = require('dotenv');
-//dotenv.config(); 
+const dotenv = require('dotenv');
+dotenv.config(); 
 const app = express();
 mongoose.set('strictQuery', false);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 3000;
+const CONNECTION = process.env.CONNECTION;
 
 // adding some JSON 
 const customers = [
@@ -37,7 +38,7 @@ app.post('/api/customers', (req, res)=> {
  // start of mongodb connect
   const start = async() => {
     try{
-        await mongoose.connect('mongodb+srv://njiddasalifu:Salifu@cluster0.npdgefe.mongodb.net/?retryWrites=true&w=majority');
+        await mongoose.connect(CONNECTION);
 
         // starting the application after mongoDB connects 
         app.listen(PORT, () => {
