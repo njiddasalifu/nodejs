@@ -1,5 +1,9 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
+mongoose.set('strictQuery', false);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 const PORT = 3000;
 
 // adding some JSON 
@@ -17,14 +21,24 @@ const customers = [
         "Industry": "FinTech"
     }
 ];
-// this is making a GET request ti the server
+// this is making a GET request t0 the server
 app.get('/', (req, res) => {
     res.send({ "customers": customers});
 });
 // making POST request to the server
-app.post('/', (req, res)=> {
-    res.send("This is a POST request")
-})
- app.listen(PORT, () => {
-    console.log('App is listening on port ' + PORT);
- });
+app.post('/api/customers', (req, res)=> {
+    console.log(req.body);
+    res.send(req.body);
+});
+ 
+
+ // start of mongodb connect
+  const start = async() => {
+    await mongoose.connect('mongodb+srv://njiddasalifu:Salifu@cluster0.npdgefe.mongodb.net/?retryWrites=true&w=majority');
+
+    // starting the application after mongoDB connects 
+    app.listen(PORT, () => {
+        console.log('App is listening on port ' + PORT);
+     });
+  };
+  start();
