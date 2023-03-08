@@ -31,15 +31,16 @@ const customer = new Customer({
     name: 'Salifu',
     industry: 'Tech'
 });
-customer.save();
+ 
 
 app.get('/', (req, res)=> {
     res.send(customer);
 });
 
 // this is making a GET request t0 the server
-app.get('/', (req, res) => {
-    res.send({ "customers": customers});
+app.get('/', async (req, res) => {
+    const result = await Customer.find();
+    res.send({ "customers": results});
 });
 
 
