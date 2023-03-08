@@ -25,6 +25,7 @@ const customers = [
         "Industry": "FinTech"
     }
 ];
+
 // creating a customer to be saved in mongodb
 const customer = new Customer({
     name: 'Salifu',
