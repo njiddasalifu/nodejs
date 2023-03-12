@@ -37,7 +37,7 @@ const customer = new Customer({
  
 
 app.get('/', (req, res)=> {
-    res.send('Welcome !');
+    res.send('customer');
 });
 
 // this is making a GET request t0 the server
