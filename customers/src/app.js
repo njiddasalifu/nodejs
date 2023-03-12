@@ -1,18 +1,21 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 const Customer = require('./models/customer')
-dotenv.config(); 
+
 const app = express();
 mongoose.set('strictQuery', false);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+if(process.env.NODE_Env !== 'production'){
+    require('dotenv').config();
+}
+
 const PORT = process.env.PORT || 3000;
 const CONNECTION = process.env.CONNECTION;
 
 // adding some JSON 
 const customers = [
-    {
+    { 
         "name": "Salif",
         "Industry": "Tech"
     },
