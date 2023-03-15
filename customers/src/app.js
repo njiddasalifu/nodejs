@@ -48,9 +48,15 @@ app.get('/', async (req, res) => {
 
 
 // making POST request to the server
+// saving data to database 
 app.post('/api/customers', (req, res)=> {
     console.log(req.body);
-    res.send(req.body);
+    const customer = new Customer({
+        name: req.body.name,
+        industry: req.body.industry
+    });
+    customer.save();
+
 });
  
 
