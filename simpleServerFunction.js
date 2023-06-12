@@ -8,7 +8,7 @@ const server = http.createServer((req, res) => {
     res.setHeader('Content-type', 'text/html');
     res.end('<h1>Welcome to my page!</h1>');
 });
-
+//server listen on port and connecting to an IP address
 server.listen(3000, '127.0.0.1', () => {
     console.log('Server rinning...');
     // at this level check the console to see the log message
