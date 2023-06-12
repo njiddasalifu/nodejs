@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
 });
 //server listen on port and connecting to an IP address
 server.listen(3000, '127.0.0.1', () => {
-    console.log('Server rinning...');
+    console.log('Server rinning on PORT:3000');
     // at this level check the console to see the log message
     // open browser and go to 127.0.0.1:3000 to see results
 })
