@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 if(process.env.NODE_Env !== 'production'){
     require('dotenv').config();
 }
-
+//processing the port from env file
 const PORT = process.env.PORT || 3000;
 const CONNECTION = process.env.CONNECTION;
 
