@@ -40,7 +40,7 @@ app.get('/', (req, res)=> {
     res.send('customer');
 });
 
-// this is making a GET request t0 the server
+// this is making a GET request to the server to get the customer
 app.get('/', async (req, res) => {
     const result = await Customer.find();
     res.send({ "customers": results});
@@ -56,6 +56,7 @@ app.post('/api/customers', (req, res)=> {
         industry: req.body.industry
     });
     customer.save();
+    //saving the cutomer data to the mongodb cluster
 
 });
  
